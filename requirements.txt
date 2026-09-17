@@ -1,0 +1,6 @@
+fastapi>=0.115.0
+uvicorn[standard]>=0.32.0
+python-multipart>=0.0.12
+faster-whisper>=1.1.0
+argostranslate>=1.9.6
+sentencepiece>=0.2.0

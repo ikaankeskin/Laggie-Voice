@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Laggie-Voice</title>
+    <meta
+      name="description"
+      content="Transcribe Turkish and English recordings in the browser, then translate both ways."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <p class="banner">
+        <strong>Browser demo.</strong>
+        Whisper and translation run in this tab (first run downloads models).
+        For private, higher-quality transcription, run the local app from the
+        <a href="https://github.com/kaankeskin/Laggie-Voice">GitHub repo</a>.
+      </p>
+
+      <header class="top">
+        <div class="mark" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <div>
+          <p class="eyebrow">Turkish · English</p>
+          <h1>Laggie-Voice</h1>
+        </div>
+        <p class="lede">
+          Built as a private studio for TR/EN voice recordings. Useful anywhere
+          you need speech as text, and the other language beside it.
+        </p>
+      </header>
+
+      <div class="uses">
+        <section class="panel">
+          <h2>Designed for</h2>
+          <p>
+            Keeping Turkish and English recordings on your machine: interviews,
+            class audio, voice memos, bilingual messages — transcript plus a
+            translation, without a cloud speech API.
+          </p>
+        </section>
+        <section class="panel">
+          <h2>Also useful for</h2>
+          <ul>
+            <li>Meeting and lecture notes</li>
+            <li>Language study and first-pass subtitles</li>
+            <li>Searchable notes from a recording</li>
+            <li>Checking whether a clip is TR, EN, or mixed</li>
+          </ul>
+        </section>
+      </div>
+
+      <main class="studio">
+        <section class="panel source">
+          <div class="panel-head">
+            <h2>Audio</h2>
+            <p id="file-label" class="hint">No file yet</p>
+          </div>
+
+          <div class="record-row">
+            <button id="record-btn" type="button" class="record">Record</button>
+            <div id="timer" class="timer" hidden>00:00</div>
+            <audio id="preview" controls hidden></audio>
+          </div>
+
+          <label class="drop" id="drop-zone">
+            <input id="file-input" type="file" accept="audio/*,.mp3,.wav,.m4a,.webm,.ogg" />
+            <strong>Drop a recording</strong>
+            <span>or click to upload wav, mp3, m4a, webm, ogg</span>
+          </label>
+
+          <div class="controls">
+            <label>
+              Speech language
+              <select id="language">
+                <option value="auto">Auto detect</option>
+                <option value="tr">Turkish</option>
+                <option value="en">English</option>
+              </select>
+            </label>
+            <label>
+              Whisper model
+              <select id="model-size">
+                <option value="tiny">tiny (fastest in-browser)</option>
+                <option value="base" selected>base (recommended here)</option>
+              </select>
+            </label>
+          </div>
+
+          <button id="transcribe-btn" type="button" class="primary" disabled>
+            Transcribe
+          </button>
+        </section>
+
+        <section class="panel result">
+          <div class="panel-head">
+            <h2>Transcript</h2>
+            <p id="meta" class="hint">Waiting</p>
+          </div>
+          <textarea
+            id="transcript"
+            placeholder="Transcript will appear here…"
+            spellcheck="false"
+          ></textarea>
+          <div class="actions">
+            <button id="copy-transcript" type="button" disabled>Copy</button>
+            <button id="download-transcript" type="button" disabled>
+              Download .txt
+            </button>
+          </div>
+        </section>
+
+        <section class="panel result">
+          <div class="panel-head">
+            <h2>Translation</h2>
+            <p id="translate-meta" class="hint">Turkish ↔ English</p>
+          </div>
+          <textarea
+            id="translation"
+            placeholder="Translation will appear here…"
+            spellcheck="false"
+          ></textarea>
+          <div class="actions">
+            <button id="translate-btn" type="button" disabled>Translate</button>
+            <button id="copy-translation" type="button" disabled>Copy</button>
+            <button id="download-translation" type="button" disabled>
+              Download .txt
+            </button>
+          </div>
+        </section>
+      </main>
+
+      <p id="status" class="status" role="status">
+        Ready. First transcribe downloads Whisper into this browser.
+      </p>
+    </div>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

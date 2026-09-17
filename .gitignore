@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.DS_Store
+.tmp/
+uploads/
+*.wav
+*.mp3
+*.m4a
+*.webm
+*.ogg
+*.aiff
+*.aif
+*.caf
+.cache/
+huggingface/

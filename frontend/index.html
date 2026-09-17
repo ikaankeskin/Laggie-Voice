@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Laggie-Voice</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="top">
+        <div class="mark" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <div>
+          <p class="eyebrow">Local studio</p>
+          <h1>Laggie-Voice</h1>
+        </div>
+        <p class="lede">
+          Transcribe Turkish and English recordings on this machine. Translate
+          both ways. Nothing is sent to a cloud API.
+        </p>
+      </header>
+
+      <main>
+        <section class="panel source">
+          <div class="panel-head">
+            <h2>Audio</h2>
+            <p id="file-label" class="hint">No file yet</p>
+          </div>
+
+          <div class="record-row">
+            <button id="record-btn" type="button" class="record">
+              Record
+            </button>
+            <div id="timer" class="timer" hidden>00:00</div>
+            <audio id="preview" controls hidden></audio>
+          </div>
+
+          <label class="drop" id="drop-zone">
+            <input id="file-input" type="file" accept="audio/*,.mp3,.wav,.m4a,.webm,.ogg,.aiff,.aif" />
+            <strong>Drop a recording</strong>
+            <span>or click to upload wav, mp3, m4a, webm, ogg, aiff</span>
+          </label>
+
+          <div class="controls">
+            <label>
+              Speech language
+              <select id="language">
+                <option value="auto">Auto detect</option>
+                <option value="tr">Turkish</option>
+                <option value="en">English</option>
+              </select>
+            </label>
+            <label>
+              Whisper model
+              <select id="model-size">
+                <option value="base">base (fastest)</option>
+                <option value="small" selected>small (recommended)</option>
+                <option value="medium">medium (best TR quality)</option>
+              </select>
+            </label>
+          </div>
+
+          <button id="transcribe-btn" type="button" class="primary" disabled>
+            Transcribe
+          </button>
+        </section>
+
+        <section class="panel result">
+          <div class="panel-head">
+            <h2>Transcript</h2>
+            <p id="meta" class="hint">Waiting</p>
+          </div>
+          <textarea
+            id="transcript"
+            placeholder="Transcript will appear here…"
+            spellcheck="false"
+          ></textarea>
+          <div class="actions">
+            <button id="copy-transcript" type="button" disabled>Copy</button>
+            <button id="download-transcript" type="button" disabled>
+              Download .txt
+            </button>
+          </div>
+        </section>
+
+        <section class="panel result">
+          <div class="panel-head">
+            <h2>Translation</h2>
+            <p id="translate-meta" class="hint">Turkish ↔ English</p>
+          </div>
+          <textarea
+            id="translation"
+            placeholder="Translation will appear here…"
+            spellcheck="false"
+          ></textarea>
+          <div class="actions">
+            <button id="translate-btn" type="button" disabled>Translate</button>
+            <button id="copy-translation" type="button" disabled>Copy</button>
+            <button id="download-translation" type="button" disabled>
+              Download .txt
+            </button>
+          </div>
+        </section>
+      </main>
+
+      <p id="status" class="status" role="status">Ready. First run downloads models (a few hundred MB).</p>
+    </div>
+    <script src="/app.js"></script>
+  </body>
+</html>
