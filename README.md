@@ -4,7 +4,7 @@ A local web app for **Turkish and English** speech. Record in the browser or dro
 
 Audio stays on the machine that runs the app. This version does not read the transcript aloud.
 
-**In-browser demo:** after this repo is on GitHub, GitHub Pages serves [`docs/`](docs/) at `https://<your-username>.github.io/Laggie-Voice/`. Models download into the browser; quality is lower than the local app.
+**[Open the in-browser demo](https://ikaankeskin.github.io/Laggie-Voice/)** — GitHub Pages runs Whisper in your tab. Quality is lower than the local app.
 
 ---
 
@@ -115,9 +115,7 @@ This repo includes a [devcontainer](.devcontainer/devcontainer.json). On GitHub:
 
 ## In-browser demo (GitHub Pages)
 
-The site in [`docs/`](docs/) is a static page that runs Whisper and Opus-MT **in the browser**. No Python server.
-
-After you push this repo to GitHub, Pages is deployed from `docs/` by [`.github/workflows/pages.yml`](.github/workflows/pages.yml). Enable **Settings → Pages → GitHub Actions** if it does not go live on the first push.
+The site in [`docs/`](docs/) is a static page that runs Whisper and Opus-MT **in the browser**. No Python server. Live URL: [https://ikaankeskin.github.io/Laggie-Voice/](https://ikaankeskin.github.io/Laggie-Voice/).
 
 Local preview of the demo:
 
